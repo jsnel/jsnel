@@ -1,7 +1,5 @@
 ### Hi there! My name is Joris 👋
 
-![visitors](https://visitor-badge.glitch.me/badge?page_id=jsnel.jsnel)
-
 [![Gmail Badge](https://img.shields.io/badge/-j.snellenburg@gmail.com-c14438?style=flat&logo=Gmail&logoColor=white)](mailto:j.snellenburg+gh-profile@gmail.com "Connect via Email")
 
 H/T to @s-weigand for the inspiration for this profile.
