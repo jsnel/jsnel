@@ -17,7 +17,9 @@ Project website with the software, documentation, publications and getting-start
 
 ---
 
-<sub>Python · Jupyter · Git · C++</sub>
+**Ask me about:** global and target analysis of time-resolved spectroscopy data · modeling of energy transfer and trapping in the thylakoid membrane · maintaining scientific Python packages · the optics of the human eye · Zernike polynomials
+
+**Publications:** [Google Scholar](https://scholar.google.com/citations?user=wssMlVsAAAAJ) · [ORCID](https://orcid.org/0000-0002-1428-0221) · [Vrije Universiteit Amsterdam](https://research.vu.nl/en/persons/joris-snellenburg/) (guest researcher)
 
 <details>
 <summary>📊 GitHub stats</summary>
