@@ -9,7 +9,7 @@ permissions:
   contents: write
 env:
   STATS: username=jsnel&role=OWNER,ORGANIZATION_MEMBER&include_all_commits=true&show=reviews&hide=issues&hide_rank=true&show_icons=true&card_width=420&disable_animations=true
-  LANGS: username=jsnel&role=OWNER,ORGANIZATION_MEMBER&layout=compact&langs_count=8&card_width=380&exclude_repo=jsnel&disable_animations=true
+  LANGS: username=jsnel&role=OWNER,ORGANIZATION_MEMBER&layout=compact&langs_count=8&card_width=380&exclude_repo=jsnel&hide=Jupyter%20Notebook,HTML&disable_animations=true
   PIN: show_owner=true&show_icons=true&description_lines_count=2&disable_animations=true
   # Transparent background; colors match the banner (cyan titles, violet icons)
   LIGHT: hide_border=true&bg_color=00000000&title_color=0a7ea4&icon_color=8250df&text_color=1f2328
