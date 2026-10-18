@@ -1,40 +1,44 @@
-# Visit https://github.com/lowlighter/metrics/blob/master/action.yml for full reference
-name: Metrics
+# Generates the profile stat cards with https://github.com/stats-organization/github-readme-stats-action
+name: Stats cards
 on:
   # Schedule updates (at 06:06 on Saturday)
   schedule: [{ cron: "6 6 * * 6" }]
-  # Lines below let you run workflow manually and on each commit
   workflow_dispatch:
-  push: { branches: ["master", "main"] }
+  push: { branches: ["main"] }
+permissions:
+  contents: write
+env:
+  STATS: username=jsnel&role=OWNER,ORGANIZATION_MEMBER&include_all_commits=true&show=reviews&hide=issues&hide_rank=true&show_icons=true&card_width=420&disable_animations=true
+  LANGS: username=jsnel&role=OWNER,ORGANIZATION_MEMBER&layout=compact&langs_count=8&card_width=380&exclude_repo=jsnel&disable_animations=true
+  PIN: show_owner=true&show_icons=true&description_lines_count=2&disable_animations=true
+  # Transparent background; colors match the banner (cyan titles, violet icons)
+  LIGHT: hide_border=true&bg_color=00000000&title_color=0a7ea4&icon_color=8250df&text_color=1f2328
+  DARK: hide_border=true&bg_color=00000000&title_color=4cc9f0&icon_color=a78bfa&text_color=e6edf3
 jobs:
-  github-metrics:
+  stats-cards:
     runs-on: ubuntu-latest
     steps:
-      - uses: lowlighter/metrics@v3.34
-        with:
-          # Your GitHub token
-          # The following scopes are required:
-          #  - public_access (default scope)
-          # The following additional scopes may be required:
-          #  - read:org  (for organization related metrics)
-          #  - read:user (for user related data)
-          #  - repo      (optional, if you want to include private repositories)
-          token: ${{ secrets.METRICS_TOKEN }}
-
-          # Options
-          user: jsnel
-          template: classic
-          base: header
-          config_animations: no
-          config_octicon: yes
-          config_timezone: Europe/Amsterdam
-          plugin_isocalendar: yes
-          plugin_isocalendar_duration: full-year
-          plugin_languages: yes
-          plugin_languages_analysis_timeout: 15
-          plugin_languages_categories: markup, programming
-          plugin_languages_colors: github
-          plugin_languages_ignored: Vim script, Lua
-          plugin_languages_limit: 8
-          plugin_languages_sections: most-used
-          plugin_languages_threshold: 0%
+      - uses: actions/checkout@v5
+      - uses: stats-organization/github-readme-stats-action@v2
+        with: { card: stats, path: assets/cards/stats-light.svg, options: "${{ env.STATS }}&${{ env.LIGHT }}" }
+      - uses: stats-organization/github-readme-stats-action@v2
+        with: { card: stats, path: assets/cards/stats-dark.svg, options: "${{ env.STATS }}&${{ env.DARK }}" }
+      - uses: stats-organization/github-readme-stats-action@v2
+        with: { card: top-langs, path: assets/cards/langs-light.svg, options: "${{ env.LANGS }}&${{ env.LIGHT }}" }
+      - uses: stats-organization/github-readme-stats-action@v2
+        with: { card: top-langs, path: assets/cards/langs-dark.svg, options: "${{ env.LANGS }}&${{ env.DARK }}" }
+      - uses: stats-organization/github-readme-stats-action@v2
+        with: { card: pin, path: assets/cards/pyglotaran-light.svg, options: "username=glotaran&repo=pyglotaran&${{ env.PIN }}&${{ env.LIGHT }}" }
+      - uses: stats-organization/github-readme-stats-action@v2
+        with: { card: pin, path: assets/cards/pyglotaran-dark.svg, options: "username=glotaran&repo=pyglotaran&${{ env.PIN }}&${{ env.DARK }}" }
+      - uses: stats-organization/github-readme-stats-action@v2
+        with: { card: pin, path: assets/cards/pyglotaran-extras-light.svg, options: "username=glotaran&repo=pyglotaran-extras&${{ env.PIN }}&${{ env.LIGHT }}" }
+      - uses: stats-organization/github-readme-stats-action@v2
+        with: { card: pin, path: assets/cards/pyglotaran-extras-dark.svg, options: "username=glotaran&repo=pyglotaran-extras&${{ env.PIN }}&${{ env.DARK }}" }
+      - name: Commit cards
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/cards/*.svg
+          git commit -m "Update stats cards" || exit 0
+          git push
