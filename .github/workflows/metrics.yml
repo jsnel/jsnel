@@ -18,7 +18,7 @@ jobs:
   stats-cards:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - uses: stats-organization/github-readme-stats-action@v2
         with: { card: stats, path: assets/cards/stats-light.svg, options: "${{ env.STATS }}&${{ env.LIGHT }}" }
       - uses: stats-organization/github-readme-stats-action@v2
