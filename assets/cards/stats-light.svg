@@ -9,7 +9,7 @@
         aria-labelledby="descId"
       >
         <title id="titleId">Joris Snellenburg&#39;s GitHub Stats, Rank: A</title>
-        <desc id="descId">Total Stars Earned: 108, Total Commits  : 1277, Total PRs: 313, Total PRs Reviewed: 17, Contributed to (last year): 17</desc>
+        <desc id="descId">Total Stars Earned: 108, Total Commits  : 1278, Total PRs: 313, Total PRs Reviewed: 17, Contributed to (last year): 17</desc>
         <style>
           .header {
             font: 600 18px 'Segoe UI', Ubuntu, Sans-Serif;
@@ -73,7 +73,7 @@
         stroke-dashoffset: 251.32741228718345;
       }
       to {
-        stroke-dashoffset: 47.59196695729977;
+        stroke-dashoffset: 47.62096012174229;
       }
     }
   
